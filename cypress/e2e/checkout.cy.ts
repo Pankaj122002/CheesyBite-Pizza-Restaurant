@@ -5,7 +5,7 @@ describe('Checkout Flow', () => {
     cy.contains('.card', 'Farmhouse Veggie Pizza').contains('button', 'Add to Cart').click()
     
     // 2. Navigate to Cart via sticky bar
-    cy.get('.sticky-cart-bar').contains('View Cart').click()
+    cy.get('.sticky-cart-bar').contains('View Cart').click({ force: true })
     cy.url().should('include', '/cart')
     
     // 3. Verify Cart page

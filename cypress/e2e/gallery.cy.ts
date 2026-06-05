@@ -4,7 +4,7 @@ describe('Gallery Page', () => {
   })
 
   it('should display the gallery section', () => {
-    cy.contains('Our Food & Restaurant')
+    cy.contains('Our Gallery')
     cy.get('img').should('have.length.at.least', 1)
   })
 })

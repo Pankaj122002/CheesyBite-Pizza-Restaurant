@@ -4,7 +4,7 @@ describe('Reviews Page', () => {
   })
 
   it('should display customer reviews', () => {
-    cy.contains('What Our Customers Say')
+    cy.contains('Customer Reviews')
     cy.get('.premium-card').should('have.length.at.least', 1)
   })
 })

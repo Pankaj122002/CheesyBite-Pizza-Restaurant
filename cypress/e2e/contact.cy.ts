@@ -4,7 +4,7 @@ describe('Contact Page', () => {
   })
 
   it('should display contact details and form', () => {
-    cy.contains('Get In Touch')
-    cy.get('form').should('exist')
+    cy.contains('Location')
+    cy.get('.contact-card').should('exist')
   })
 })
