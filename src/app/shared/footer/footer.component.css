@@ -1,0 +1,30 @@
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--secondary);
+  padding-left: 5px;
+}
+
+.footer-contact li {
+  margin-bottom: 12px;
+  color: var(--text-light);
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-contact a:hover {
+  color: var(--secondary) !important;
+}
+
+.veg-badge {
+  color: var(--accent-red);
+  border: 1px solid var(--accent-red);
+}

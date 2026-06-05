@@ -1,0 +1,31 @@
+.feature-card {
+  transition: var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-icon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.bg-dark-section {
+  background-color: var(--bg-dark);
+  padding: 60px 0;
+}
+
+.qr-placeholder {
+  transition: var(--transition);
+}
+
+.qr-placeholder:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .feature-icon {
+    font-size: 36px;
+  }
+}

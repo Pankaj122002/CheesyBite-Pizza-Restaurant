@@ -1,0 +1,51 @@
+.gallery-card {
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.gallery-img {
+  transition: transform 0.5s ease;
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .gallery-img {
+  transform: scale(1.1);
+}
+
+.gallery-card:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.btn-outline-secondary {
+  border: 2px solid var(--border-light);
+  color: var(--text-secondary);
+  background: white;
+}
+
+.btn-outline-secondary:hover {
+  background: var(--bg-cream-dark);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.max-h-80vh {
+  max-height: 80vh;
+}
+
+.modal-backdrop {
+  background-color: rgba(26, 26, 46, 0.95);
+}

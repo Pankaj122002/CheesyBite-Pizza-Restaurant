@@ -1,0 +1,113 @@
+<div class="container section-padding min-vh-100 mt-5 pt-5 d-flex align-items-center justify-content-center animate-fadeInUp">
+  <div class="confirmation-container w-100" style="max-width: 700px;" *ngIf="order">
+    
+    <div class="text-center mb-5 d-print-none">
+      <h4 class="fw-bold mb-4 text-primary-custom">Complete Your Order in 4 Easy Steps</h4>
+      
+      <div class="workflow-timeline d-flex flex-column flex-md-row justify-content-between mb-5 text-start text-md-center position-relative">
+        <div class="workflow-line"></div>
+        
+        <div class="workflow-step position-relative z-1 mb-4 mb-md-0">
+          <div class="step-icon bg-whatsapp text-white mx-md-auto mb-md-2 shadow-sm d-flex align-items-center justify-content-center">
+            <i class="bi bi-whatsapp fs-4"></i>
+          </div>
+          <div>
+            <div class="step-text fw-bold">1. Send Order</div>
+            <div class="small text-secondary-custom px-md-2 mt-1">Click below to send order on WhatsApp</div>
+          </div>
+        </div>
+        
+        <div class="workflow-step position-relative z-1 mb-4 mb-md-0">
+          <div class="step-icon bg-white text-primary-custom border border-primary-custom mx-md-auto mb-md-2 shadow-sm d-flex align-items-center justify-content-center">
+            <i class="bi bi-qr-code fs-4"></i>
+          </div>
+          <div>
+            <div class="step-text fw-bold">2. Get QR Code</div>
+            <div class="small text-secondary-custom px-md-2 mt-1">Shopkeeper will send Payment QR</div>
+          </div>
+        </div>
+        
+        <div class="workflow-step position-relative z-1 mb-4 mb-md-0">
+          <div class="step-icon bg-white text-primary-custom border border-primary-custom mx-md-auto mb-md-2 shadow-sm d-flex align-items-center justify-content-center">
+            <i class="bi bi-receipt fs-4"></i>
+          </div>
+          <div>
+            <div class="step-text fw-bold">3. Pay & Screenshot</div>
+            <div class="small text-secondary-custom px-md-2 mt-1">Pay & send the screenshot back</div>
+          </div>
+        </div>
+        
+        <div class="workflow-step position-relative z-1 mb-4 mb-md-0">
+          <div class="step-icon bg-white text-primary-custom border border-primary-custom mx-md-auto mb-md-2 shadow-sm d-flex align-items-center justify-content-center">
+            <i class="bi bi-clock-history fs-4"></i>
+          </div>
+          <div>
+            <div class="step-text fw-bold">4. Ready Time</div>
+            <div class="small text-secondary-custom px-md-2 mt-1">Owner confirms and sends ready time</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+        <button type="button" class="btn btn-whatsapp btn-lg px-5 py-3 rounded-pill fw-bold" (click)="sendToWhatsApp()">
+          <i class="bi bi-whatsapp me-2"></i> Send Order To WhatsApp
+        </button>
+        <button type="button" class="btn btn-secondary-custom btn-lg px-4 rounded-pill fw-bold" routerLink="/cart">
+          <i class="bi bi-pencil me-2"></i> Edit Order
+        </button>
+      </div>
+    </div>
+
+    <div class="card premium-card border-0 p-4 p-md-5 mb-4 order-details-card">
+      <div class="row g-4 mb-4">
+        <div class="col-sm-6">
+          <div class="small text-secondary-custom mb-1">Order ID</div>
+          <div class="fw-bold text-primary-custom fs-5">{{ order.orderId }}</div>
+        </div>
+        <div class="col-sm-6 text-sm-end">
+          <div class="small text-secondary-custom mb-1">Order Date & Time</div>
+          <div class="fw-bold">{{ order.date }} | {{ order.time }}</div>
+        </div>
+        
+        <div class="col-sm-6">
+          <div class="small text-secondary-custom mb-1">Customer Name</div>
+          <div class="fw-bold">{{ order.customerName }}</div>
+        </div>
+        <div class="col-sm-6 text-sm-end">
+          <div class="small text-secondary-custom mb-1">Mobile Number</div>
+          <div class="fw-bold">{{ order.customerPhone }}</div>
+        </div>
+        
+        <div class="col-sm-6">
+          <div class="small text-secondary-custom mb-1">Order Type</div>
+          <span class="badge bg-cream text-dark border border-secondary px-3 py-2 fs-6 rounded-pill">{{ order.orderType }}</span>
+        </div>
+      </div>
+
+      <hr class="text-muted opacity-25 mb-4">
+      
+      <h5 class="fw-bold mb-4">Items Ordered</h5>
+      
+      <div class="mb-3" *ngFor="let item of order.items">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <span class="fw-bold">{{ item.menuItem.name }} &times; {{ item.quantity }}</span>
+          <span class="fw-bold">₹{{ item.menuItem.price * item.quantity }}</span>
+        </div>
+        <div class="small text-secondary-custom">₹{{ item.menuItem.price }} &times; {{ item.quantity }} = ₹{{ item.menuItem.price * item.quantity }}</div>
+      </div>
+
+      <hr class="text-muted opacity-25 my-4">
+      
+      <div class="d-flex justify-content-between align-items-center bg-cream p-3 rounded">
+        <span class="fs-4 fw-bold">Grand Total</span>
+        <span class="fs-2 fw-bold text-primary-custom">₹{{ order.total }}</span>
+      </div>
+
+      <div class="mt-4 p-3 bg-light rounded border" *ngIf="order.specialInstructions">
+        <div class="small text-secondary-custom mb-1 fw-bold">Special Instructions:</div>
+        <div class="fst-italic text-dark">{{ order.specialInstructions }}</div>
+      </div>
+    </div>
+
+  </div>
+</div>

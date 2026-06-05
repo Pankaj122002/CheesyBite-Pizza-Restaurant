@@ -1,0 +1,27 @@
+<div class="card review-card h-100 p-4 border-0">
+  <div class="mb-3">
+    <i class="bi bi-quote fs-1 text-secondary-custom opacity-50"></i>
+  </div>
+  
+  <p class="card-text fst-italic flex-grow-1 mb-4 text-secondary-custom">
+    "{{ review.text }}"
+  </p>
+  
+  <div class="mt-auto pt-3 border-top d-flex align-items-center">
+    <div class="avatar me-3 text-white d-flex align-items-center justify-content-center fw-bold" 
+         [style.backgroundColor]="bgColor">
+      {{ initial }}
+    </div>
+    
+    <div>
+      <h6 class="mb-1 fw-bold text-primary-custom">{{ review.name }}</h6>
+      <div class="d-flex align-items-center">
+        <div class="stars me-2">
+          <i class="bi bi-star-fill text-warning" *ngFor="let s of stars"></i>
+          <i class="bi bi-star text-warning" *ngFor="let s of emptyStars"></i>
+        </div>
+        <small class="text-muted">{{ review.date }}</small>
+      </div>
+    </div>
+  </div>
+</div>

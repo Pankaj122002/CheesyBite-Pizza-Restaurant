@@ -1,0 +1,49 @@
+<app-hero-banner
+  title="Our Menu"
+  subtitle="Handcrafted with love and tradition"
+  backgroundImage="assets/images/gallery-food-spread.webp">
+</app-hero-banner>
+
+<section class="section-padding bg-cream" style="padding-bottom: 120px;">
+  <div class="container">
+    
+    <!-- Combo Suggestion -->
+    <div class="row justify-content-center mb-5 animate-fadeInUp">
+      <div class="col-lg-8">
+        <div class="combo-banner text-center p-4 rounded-pill shadow-sm">
+          <span class="fs-4 me-2">🎉</span>
+          <span class="fw-bold fs-5 text-primary-custom">Try our combo!</span>
+          <span class="fs-5 ms-2">Add Garlic Bread with your Pizza for just ₹99</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="row justify-content-center g-4">
+      <div class="col-lg-4 col-md-6 animate-fadeInUp" *ngFor="let item of menuItems; let i = index" [ngClass]="'delay-' + (i + 1)">
+        <app-food-card [menuItem]="item" class="large-card d-block h-100"></app-food-card>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sticky Bottom Cart Bar -->
+<div class="sticky-cart-bar" *ngIf="(cartCount$ | async)! > 0" [class.show]="(cartCount$ | async)! > 0">
+  <div class="container h-100">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <div class="d-flex align-items-center text-white">
+        <div class="position-relative me-3">
+          <i class="bi bi-cart3 fs-3"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cartCount$ | async }}
+          </span>
+        </div>
+        <div>
+          <div class="small opacity-75">Total Amount</div>
+          <div class="fw-bold fs-5">₹{{ cartTotal$ | async }}</div>
+        </div>
+      </div>
+      <a routerLink="/cart" class="btn btn-light fw-bold px-4 rounded-pill">View Cart <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+  </div>
+</div>

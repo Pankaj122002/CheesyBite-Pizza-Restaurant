@@ -1,0 +1,17 @@
+<section class="hero-banner d-flex align-items-center position-relative" [ngClass]="{'min-vh-100': fullHeight, 'min-vh-50': !fullHeight}" [style.backgroundImage]="'url(' + backgroundImage + ')'">
+  <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+  
+  <div class="container position-relative text-center text-white z-1 animate-fadeInUp">
+    <h1 class="display-3 fw-bold mb-3 fw-heading text-white text-shadow">{{ title }}</h1>
+    <p class="lead mb-4 fs-4 fw-light text-white text-shadow">{{ subtitle }}</p>
+    
+    <div *ngIf="showCTA" class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+      <a href="tel:+918954040631" class="btn-primary-custom shadow-lg">
+        <i class="bi bi-telephone-fill"></i> Call Now
+      </a>
+      <a routerLink="/menu" class="btn-whatsapp shadow-lg">
+        <i class="bi bi-whatsapp"></i> Order on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>

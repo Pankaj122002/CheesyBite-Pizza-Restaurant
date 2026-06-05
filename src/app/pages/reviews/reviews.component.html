@@ -1,0 +1,46 @@
+<app-hero-banner
+  title="Customer Reviews"
+  subtitle="What our happy customers say about our pizza"
+  backgroundImage="assets/images/gallery-customers.webp">
+</app-hero-banner>
+
+<section class="section-padding bg-cream">
+  <div class="container">
+    
+    <!-- Rating Summary -->
+    <div class="row justify-content-center mb-5 animate-fadeInUp">
+      <div class="col-md-8 col-lg-6">
+        <div class="card premium-card border-0 text-center p-5">
+          <h2 class="display-1 fw-bold text-secondary mb-0">4.5</h2>
+          <div class="fs-2 text-warning mb-2">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+          </div>
+          <p class="text-secondary-custom fs-5 mb-4">Based on 500+ happy customers</p>
+          <a href="https://maps.app.goo.gl/YfEfMfsA4VJpvn2N6" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark rounded-pill px-4 py-2 fw-bold d-inline-flex align-items-center justify-content-center mx-auto">
+            <i class="bi bi-google text-primary me-2"></i> Review us on Google
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Grid -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-4 col-sm-6 animate-fadeInUp" *ngFor="let review of reviews; let i = index" [ngClass]="'delay-' + (i % 3 + 1)">
+        <app-review-card [review]="review"></app-review-card>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-5 animate-fadeInUp">
+      <h3 class="fw-bold mb-3">Loved our food? Share your experience!</h3>
+      <a href="https://maps.app.goo.gl/YfEfMfsA4VJpvn2N6" target="_blank" rel="noopener noreferrer" class="btn-primary-custom btn-lg mt-2">
+        <i class="bi bi-star-fill text-warning me-2"></i> Rate Us on Google
+      </a>
+    </div>
+
+  </div>
+</section>

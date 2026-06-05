@@ -1,0 +1,12 @@
+.text-secondary-custom {
+  color: var(--text-secondary) !important;
+}
+
+.text-warning {
+  color: var(--secondary) !important;
+}
+
+.display-1 {
+  font-family: var(--font-heading);
+  letter-spacing: -2px;
+}

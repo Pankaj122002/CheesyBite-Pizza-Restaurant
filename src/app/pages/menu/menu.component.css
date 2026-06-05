@@ -1,0 +1,53 @@
+.combo-banner {
+  background-color: var(--surface);
+  border: 2px dashed var(--secondary);
+  animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+  0% { border-color: var(--secondary); }
+  50% { border-color: var(--primary); }
+  100% { border-color: var(--secondary); }
+}
+
+/* Make cards larger on this page */
+:host ::ng-deep .large-card .premium-card {
+  box-shadow: var(--shadow-md);
+}
+
+:host ::ng-deep .large-card .food-image {
+  aspect-ratio: 1; /* Squarer images for menu page to be larger */
+}
+
+:host ::ng-deep .large-card .card-body {
+  padding: 1.5rem !important;
+}
+
+:host ::ng-deep .large-card .card-title {
+  font-size: 1.5rem;
+}
+
+/* Sticky Cart Bar */
+.sticky-cart-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: var(--bg-dark);
+  z-index: 998;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+}
+
+.sticky-cart-bar.show {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .combo-banner {
+    border-radius: var(--radius-md) !important;
+    padding: 1rem !important;
+  }
+}

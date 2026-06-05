@@ -1,0 +1,125 @@
+<div class="container section-padding min-vh-100 mt-5 pt-5">
+  
+  <ng-container *ngIf="(cartCount$ | async) === 0; else cartContent">
+    <div class="empty-state d-flex flex-column align-items-center justify-content-center animate-fadeInUp">
+      <i class="bi bi-cart-x text-secondary opacity-50" style="font-size: 80px;"></i>
+      <h2 class="fw-bold mt-4">Your cart is empty</h2>
+      <p class="text-secondary-custom mb-4">Explore our delicious menu and add items to your cart</p>
+      <a routerLink="/menu" class="btn-primary-custom">Browse Menu</a>
+    </div>
+  </ng-container>
+
+  <ng-template #cartContent>
+    <h2 class="section-title text-start mb-5 animate-fadeInUp">Your Cart</h2>
+    
+    <div class="row g-5">
+      <!-- Cart Items -->
+      <div class="col-lg-7 animate-fadeInUp delay-1">
+        <div class="card premium-card border-0 mb-4 p-4" *ngFor="let item of (cartItems$ | async)">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <img loading="lazy" [src]="item.menuItem.image" [alt]="item.menuItem.name" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+            </div>
+            <div class="col">
+              <h5 class="fw-bold mb-1">{{ item.menuItem.name }}</h5>
+              <p class="text-secondary-custom mb-0">₹{{ item.menuItem.price }}</p>
+            </div>
+            <div class="col-auto">
+              <div class="qty-controls">
+                <button type="button" (click)="decrement(item.menuItem.id)" aria-label="Decrease quantity">-</button>
+                <div class="qty-value">{{ item.quantity }}</div>
+                <button type="button" (click)="increment(item.menuItem.id)" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+            <div class="col-auto text-end" style="min-width: 100px;">
+              <div class="fw-bold fs-5 text-primary-custom mb-1">₹{{ item.menuItem.price * item.quantity }}</div>
+              <button type="button" class="btn btn-link text-danger p-0 text-decoration-none small" (click)="remove(item.menuItem.id)">
+                <i class="bi bi-trash"></i> Remove
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Form Position -->
+        <div class="d-lg-none mt-5">
+          <ng-container *ngTemplateOutlet="customerFormTemplate"></ng-container>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-5 animate-fadeInUp delay-2">
+        <div class="sticky-sidebar">
+          <div class="card premium-card border-0 p-4 mb-4">
+            <h4 class="fw-bold mb-4 border-bottom pb-3">Order Summary</h4>
+            
+            <div class="d-flex justify-content-between mb-3" *ngFor="let item of (cartItems$ | async)">
+              <span class="text-secondary-custom">{{ item.menuItem.name }} &times; {{ item.quantity }}</span>
+              <span class="fw-bold">₹{{ item.menuItem.price * item.quantity }}</span>
+            </div>
+            
+            <hr class="text-muted opacity-25 my-4">
+            
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fs-5 fw-bold">Grand Total</span>
+              <span class="fs-3 fw-bold text-primary-custom">₹{{ cartTotal$ | async }}</span>
+            </div>
+          </div>
+
+          <!-- Desktop Form Position -->
+          <div class="d-none d-lg-block">
+            <ng-container *ngTemplateOutlet="customerFormTemplate"></ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</div>
+
+<ng-template #customerFormTemplate>
+  <div class="card premium-card border-0 p-4">
+    <h4 class="fw-bold mb-4">Customer Details</h4>
+    
+    <form [formGroup]="customerForm" (ngSubmit)="placeOrder()">
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name *</label>
+        <input type="text" id="fullName" class="form-control" formControlName="fullName" placeholder="Enter your full name"
+               [ngClass]="{'is-invalid': customerForm.get('fullName')?.invalid && customerForm.get('fullName')?.touched}">
+        <div class="invalid-feedback">
+          <span *ngIf="customerForm.get('fullName')?.errors?.['required']">Full name is required.</span>
+          <span *ngIf="customerForm.get('fullName')?.errors?.['minlength']">Name must be at least 2 characters.</span>
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="mobileNumber" class="form-label">Mobile Number *</label>
+        <input type="tel" id="mobileNumber" class="form-control" formControlName="mobileNumber" placeholder="10 digit mobile number" maxlength="10"
+               [ngClass]="{'is-invalid': customerForm.get('mobileNumber')?.invalid && customerForm.get('mobileNumber')?.touched}">
+        <div class="invalid-feedback">
+          Please enter a valid 10-digit mobile number.
+        </div>
+      </div>
+      
+      <div class="mb-4">
+        <label class="form-label d-block">Order Type *</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="orderType" id="pickup" value="Pickup" formControlName="orderType">
+          <label class="form-check-label" for="pickup">Pickup</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="orderType" id="dineIn" value="Dine In" formControlName="orderType">
+          <label class="form-check-label" for="dineIn">Dine In</label>
+        </div>
+      </div>
+      
+      <div class="mb-4">
+        <label for="specialInstructions" class="form-label">Special Instructions (Optional)</label>
+        <textarea id="specialInstructions" class="form-control" formControlName="specialInstructions" rows="2" placeholder="e.g., Extra chutney, less spicy..."></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-whatsapp w-100 justify-content-center py-3 fs-5" [disabled]="customerForm.invalid || (cartCount$ | async) === 0">
+        Review Order <i class="bi bi-arrow-right ms-2"></i>
+      </button>
+    </form>
+  </div>
+</ng-template>

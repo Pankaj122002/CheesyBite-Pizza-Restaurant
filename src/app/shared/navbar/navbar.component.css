@@ -1,0 +1,85 @@
+.navbar {
+  background-color: transparent;
+  padding: 20px 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background-color: var(--primary);
+  padding: 10px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar.scrolled .navbar-brand {
+  color: #fff;
+}
+
+.veg-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-red);
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  padding: 8px 16px !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--secondary);
+}
+
+.cart-icon, .cart-icon-mobile {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.cart-icon:hover, .cart-icon-mobile:hover {
+  color: var(--secondary);
+}
+
+.badge.bg-danger {
+  background-color: var(--secondary) !important;
+  color: var(--text-primary);
+}
+
+/* Offcanvas overrides */
+.offcanvas {
+  background-color: var(--bg-cream);
+}
+
+.offcanvas .nav-link {
+  color: var(--text-primary);
+  padding: 15px 0 !important;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.offcanvas .nav-link.active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.navbar-toggler {
+  border-color: rgba(255,255,255,0.5);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}

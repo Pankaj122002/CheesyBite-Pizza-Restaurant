@@ -1,0 +1,40 @@
+.contact-card {
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-10px);
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.whatsapp-circle {
+  background-color: var(--whatsapp);
+}
+
+.text-secondary-custom {
+  color: var(--text-secondary) !important;
+}
+
+.map-container {
+  height: 400px;
+}
+
+.table td {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
