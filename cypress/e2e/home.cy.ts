@@ -5,7 +5,7 @@ describe('Home Page', () => {
 
   it('should load the hero section correctly', () => {
     cy.contains('h1', 'Rom\'s Pizza')
-    cy.contains('Authentic Wood-Fired Pizza in Muradnagar')
+    cy.contains('Premium Artisanal Pizza in Muradnagar')
     cy.contains('a', 'Call Now').should('have.attr', 'href').and('include', 'tel:')
     cy.contains('a', 'Order on WhatsApp').should('have.attr', 'href').and('include', '/menu')
   })
@@ -23,5 +23,9 @@ describe('Home Page', () => {
   it('should render Signature Dishes', () => {
     cy.contains('Our Signature Pizzas').should('be.visible')
     cy.get('.premium-card').should('have.length.at.least', 3)
+  })
+
+  it('should display the menu QR code', () => {
+    cy.get('img[src="assets/images/menu-qr.png"]').should('be.visible')
   })
 })

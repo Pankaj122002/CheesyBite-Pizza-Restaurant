@@ -1,6 +1,6 @@
 # Rom's Pizza – Complete Project Documentation
 
-Welcome to the **Rom's Pizza** website repository! This is a modern, responsive Angular 19 application built using Standalone Components, designed to provide a seamless digital experience for Muradnagar's favorite wood-fired pizza shop.
+Welcome to the **Rom's Pizza** website repository! This is a modern, responsive Angular 19 application built using Standalone Components, designed to provide a seamless digital experience for Muradnagar's favorite premium artisanal pizza shop.
 
 This document covers everything you need to know about the architecture, tech stack, components, services, styling, testing strategies, and the Git repository details.
 
@@ -128,6 +128,19 @@ git clone https://github.com/Pankaj122002/Roms-s-Pizza-Restaurant.git
 
 ### Building for Production
 Run `npm run build` or `ng build`. The output artifacts will be placed in the `dist/roms-pizza/` directory.
+
+---
+
+## 🚀 Deployment (Netlify)
+
+The project is currently configured and deployed on **Netlify**. 
+
+**Live URL:** [https://romspizzamuradnagar.netlify.app/](https://romspizzamuradnagar.netlify.app/) 
+
+The configuration is managed via the `netlify.toml` file in the root directory, which ensures:
+1. **Automated Builds**: The build command is set to `npm run build`.
+2. **Publish Directory**: Assets are served from `dist/roms-pizza/browser`.
+3. **SPA Routing**: A `[[redirects]]` rule redirects all incoming traffic (`/*`) back to `/index.html` with a `200` status code. This is essential for Angular's client-side routing to function properly on direct URL visits or hard refreshes.
 
 ---
 *Built with passion for Rom's Pizza!*

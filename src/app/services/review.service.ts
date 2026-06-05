@@ -18,7 +18,7 @@ export class ReviewService {
       id: 1,
       name: 'Rahul Sharma',
       rating: 5,
-      text: 'Best pizza in Muradnagar! The wood-fired crust is incredible and the toppings are very generous. Farmhouse pizza at just ₹249 is unbeatable value.',
+      text: 'Best pizza in Muradnagar! The artisanal hand-tossed crust is incredible and the toppings are very generous. Farmhouse pizza at just ₹249 is unbeatable value.',
       date: '02-Jun-2026'
     },
     {

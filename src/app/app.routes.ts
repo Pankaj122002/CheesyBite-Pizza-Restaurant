@@ -4,14 +4,14 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
-    title: 'Rom\'s Pizza — Authentic Wood-Fired Pizza',
-    data: { description: 'Best pizza in Muradnagar. Authentic wood-fired pizza and sides at affordable prices. Order via WhatsApp.' }
+    title: 'Rom\'s Pizza — Premium Artisanal Pizza',
+    data: { description: 'Best pizza in Muradnagar. Premium artisanal pizza and sides at affordable prices. Order via WhatsApp.' }
   },
   {
     path: 'menu',
     loadComponent: () => import('./pages/menu/menu.component').then(m => m.MenuComponent),
     title: 'Menu — Rom\'s Pizza',
-    data: { description: 'Explore our delicious menu featuring authentic wood-fired pizza, pasta, garlic bread, and satisfying combo meals.' }
+    data: { description: 'Explore our delicious menu featuring premium artisanal pizza, pasta, garlic bread, and satisfying combo meals.' }
   },
   {
     path: 'cart',
@@ -35,7 +35,7 @@ export const routes: Routes = [
     path: 'about',
     loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),
     title: 'About Us — Rom\'s Pizza',
-    data: { description: 'Learn about our journey of serving authentic wood-fired pizza to over 50,000 happy customers in Muradnagar.' }
+    data: { description: 'Learn about our journey of serving premium artisanal pizza to over 50,000 happy customers in Muradnagar.' }
   },
   {
     path: 'contact',

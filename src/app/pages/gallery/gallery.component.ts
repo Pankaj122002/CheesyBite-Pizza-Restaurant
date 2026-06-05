@@ -17,7 +17,7 @@ interface GalleryImage {
 })
 export class GalleryComponent {
   images: GalleryImage[] = [
-    { src: 'assets/images/hero-pizza.webp', category: 'food', caption: 'Signature Wood-Fired Pizza' },
+    { src: 'assets/images/hero-pizza.webp', category: 'food', caption: 'Signature Artisanal Pizza' },
     { src: 'assets/images/margherita-pizza.webp', category: 'food', caption: 'Margherita Pizza' },
     { src: 'assets/images/pepperoni-pizza.webp', category: 'food', caption: 'Pepperoni Pizza' },
     { src: 'assets/images/garlic-bread.webp', category: 'food', caption: 'Garlic Bread' },
