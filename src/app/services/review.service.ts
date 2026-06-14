@@ -25,7 +25,7 @@ export class ReviewService {
       id: 2,
       name: 'Priya Gupta',
       rating: 5,
-      text: 'Rom\'s Pizza is our family\'s go-to spot. The Margherita has such authentic taste, and the garlic bread is absolutely delicious. Highly recommended!',
+      text: 'CheesyBite is our family\'s go-to spot. The Margherita has such authentic taste, and the garlic bread is absolutely delicious. Highly recommended!',
       date: '25-May-2026'
     },
     {
@@ -46,7 +46,7 @@ export class ReviewService {
       id: 5,
       name: 'Vikash Kumar',
       rating: 4,
-      text: 'Muradnagar\'s hidden gem! Every time I visit GT Road, I make sure to stop at Rom\'s Pizza. The aroma itself is irresistible.',
+      text: 'Muradnagar\'s hidden gem! Every time I visit GT Road, I make sure to stop at CheesyBite. The aroma itself is irresistible.',
       date: '15-May-2026'
     },
     {
@@ -60,7 +60,7 @@ export class ReviewService {
       id: 7,
       name: 'Rohit Yadav',
       rating: 4,
-      text: 'Affordable and delicious — that\'s Rom\'s Pizza in two words. The pepperoni pizza with garlic bread combo is my favorite. Great service too!',
+      text: 'Affordable and delicious — that\'s CheesyBite in two words. The pepperoni pizza with garlic bread combo is my favorite. Great service too!',
       date: '05-May-2026'
     },
     {
