@@ -34,3 +34,16 @@
 .pulse-animation {
   animation: pulse 2s infinite;
 }
+
+@media (max-width: 576px) {
+  .floating-buttons {
+    bottom: 16px;
+    right: 16px;
+    gap: 12px !important;
+  }
+  .btn-float {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+}

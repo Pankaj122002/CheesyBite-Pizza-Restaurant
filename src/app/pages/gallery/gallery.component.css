@@ -42,6 +42,14 @@
   white-space: nowrap;
 }
 
+.filter-container::-webkit-scrollbar {
+  display: none;
+}
+.filter-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .max-h-80vh {
   max-height: 80vh;
 }

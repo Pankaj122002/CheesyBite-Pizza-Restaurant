@@ -6,9 +6,11 @@
 }
 
 .navbar.scrolled {
-  background-color: var(--primary);
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
   padding: 10px 0;
   box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .navbar-brand {
@@ -62,7 +64,7 @@
 
 /* Offcanvas overrides */
 .offcanvas {
-  background-color: var(--bg-cream);
+  background-color: var(--surface);
 }
 
 .offcanvas .nav-link {

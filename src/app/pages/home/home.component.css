@@ -1,31 +1,411 @@
-.feature-card {
-  transition: var(--transition);
+/* ====================================================
+   CheesyBite — DARK SCROLL-DRIVEN VIDEO HOME
+   ==================================================== */
+
+:host {
+  display: block;
+  background: transparent;
 }
 
-.feature-card:hover {
-  transform: translateY(-10px);
+/* ── WRAPPER ── */
+.video-scroll-wrapper {
+  position: relative;
+  width: 100%;
+  background: transparent;
 }
 
-.feature-icon {
-  font-size: 48px;
-  line-height: 1;
+/* ── STICKY STAGE ── */
+.frame-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+  z-index: 2;
 }
 
-.bg-dark-section {
-  background-color: var(--bg-dark);
-  padding: 60px 0;
+/* ── SECTION OVERLAYS ── */
+.vsection {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
 }
 
-.qr-placeholder {
-  transition: var(--transition);
+.vsection.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.qr-placeholder:hover {
-  transform: scale(1.05);
+/* Content blocks */
+.vs-content {
+  max-width: 460px;
+  padding: 40px 48px;
 }
 
-@media (max-width: 768px) {
-  .feature-icon {
-    font-size: 36px;
-  }
+.vs-left  { margin-left: 4%; margin-right: auto; }
+.vs-right { margin-left: auto; margin-right: 4%; }
+.vs-center {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 520px;
+}
+
+/* Slide-in animations */
+.vsection.active .vs-left  { animation: slideInLeft  0.65s cubic-bezier(0.4,0,0.2,1) both; }
+.vsection.active .vs-right { animation: slideInRight 0.65s cubic-bezier(0.4,0,0.2,1) both; }
+.vsection.active .vs-center{ animation: slideInUp    0.65s cubic-bezier(0.4,0,0.2,1) both; }
+.vsection.active .vs-hero-inner { animation: slideInUp 0.65s cubic-bezier(0.4,0,0.2,1) both; }
+
+@keyframes slideInLeft  { from { opacity:0; transform:translateX(-40px); } to { opacity:1; transform:translateX(0); } }
+@keyframes slideInRight { from { opacity:0; transform:translateX(40px);  } to { opacity:1; transform:translateX(0); } }
+@keyframes slideInUp    { from { opacity:0; transform:translateY(30px);  } to { opacity:1; transform:translateY(0); } }
+
+/* Hero specific dynamic positioning */
+.vs-hero {
+  margin: 0;
+  transform: translateX(calc(50vw - 50%));
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vs-hero .vs-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vs-hero-actions {
+  justify-content: center;
+}
+
+#vs-0.is-scrolled .vs-hero {
+  transform: translateX(4vw);
+  text-align: left;
+}
+
+#vs-0.is-scrolled .vs-hero .vs-desc {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+#vs-0.is-scrolled .vs-hero-actions {
+  justify-content: flex-start;
+}
+
+/* ── TAG ── */
+.vs-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #F9A825;
+  border: 1px solid rgba(249,168,37,0.35);
+  background: rgba(249,168,37,0.1);
+  padding: 5px 14px;
+  border-radius: 40px;
+  margin-bottom: 18px;
+}
+
+/* ── TITLE ── */
+.vs-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.08;
+  color: #ffffff;
+  margin: 0 0 16px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.6);
+}
+
+.vs-title em {
+  font-style: italic;
+  color: #F9A825;
+  display: block;
+}
+
+/* ── DESC ── */
+.vs-desc {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.7;
+  margin: 0 0 28px;
+  max-width: 380px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+
+.vs-center .vs-desc { margin-left: auto; margin-right: auto; }
+
+/* ── ACTIONS ── */
+.vs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.vs-actions-center { justify-content: center; }
+
+/* ── BUTTONS ── */
+.vbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.vbtn-primary {
+  background: linear-gradient(135deg, #C62828, #8E0000);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(198,40,40,0.4);
+}
+
+.vbtn-primary:hover {
+  background: linear-gradient(135deg, #E53935, #C62828);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(198,40,40,0.55);
+  color: #fff;
+}
+
+.vbtn-whatsapp {
+  background: linear-gradient(135deg, #25D366, #1DA851);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+}
+
+.vbtn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.5);
+  color: #fff;
+}
+
+.vbtn-outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.vbtn-outline:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ── PILLS (Why Us) ── */
+.vs-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.vs-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.09);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 40px;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.25s ease;
+}
+
+.vs-pill:hover {
+  background: rgba(255,255,255,0.16);
+  transform: translateX(6px);
+}
+
+.vs-pill span { font-size: 1.2rem; }
+
+/* ── STATS ── */
+.vs-stats {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0 24px;
+}
+
+.vs-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 12px;
+  padding: 14px 20px;
+  min-width: 80px;
+}
+
+.vs-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #F9A825;
+}
+
+.vs-lbl {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* ── QR ── */
+.vs-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+}
+
+.vs-qr img {
+  width: 88px;
+  height: 88px;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.2);
+  padding: 4px;
+  background: rgba(255,255,255,0.9);
+}
+
+.vs-qr span {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 1px;
+}
+
+/* ── PROGRESS BAR ── */
+.vprogress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #C62828, #F9A825);
+  z-index: 100;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.08s linear;
+}
+
+/* ── NAV DOTS ── */
+.vdots {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.vdot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  border: 1.5px solid rgba(255,255,255,0.4);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.vdot.active {
+  background: #F9A825;
+  border-color: #F9A825;
+  transform: scale(1.4);
+  box-shadow: 0 0 0 3px rgba(249,168,37,0.25);
+}
+
+/* ── SCROLL HINT ── */
+.vhint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.vhint.hidden { opacity: 0; pointer-events: none; }
+
+.vhint > span {
+  font-size: 0.65rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+}
+
+.vhint-mouse {
+  width: 22px;
+  height: 36px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 11px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.vhint-dot {
+  width: 3px;
+  height: 7px;
+  background: #F9A825;
+  border-radius: 2px;
+  animation: scrollDot 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+  0%   { transform: translateY(0); opacity: 1; }
+  80%  { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+/* ── SPACERS (drive scroll height) ── */
+.vspacers { position: relative; z-index: 1; pointer-events: none; }
+.vspacer  { height: 100vh; pointer-events: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 991px) {
+  .vs-content { max-width: 90vw; padding: 28px 20px; margin: 0 auto !important; text-align: center; }
+  .vsection { align-items: center; padding-bottom: 0; }
+  .vs-title { font-size: clamp(2rem, 7vw, 3rem); }
+  .vdots { right: 10px; }
+  .vs-stats { gap: 12px; justify-content: center; }
+  .vs-stat { padding: 10px 14px; min-width: 64px; }
+  .vs-desc { margin-left: auto; margin-right: auto; }
+  .vs-actions { justify-content: center; }
+}
+
+@media (max-width: 576px) {
+  .vs-actions { flex-direction: column; align-items: center; width: 100%; }
+  .vbtn { padding: 11px 20px; font-size: 0.88rem; width: 100%; justify-content: center; }
+  .vs-pills { gap: 8px; align-items: center; width: 100%; }
+  .vs-pill { font-size: 0.8rem; padding: 8px 16px; width: 100%; justify-content: center; }
+  .vs-stats { flex-wrap: wrap; justify-content: center; }
 }

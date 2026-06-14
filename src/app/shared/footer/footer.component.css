@@ -1,5 +1,5 @@
 .footer-links li {
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .footer-links a {
@@ -14,7 +14,7 @@
 }
 
 .footer-contact li {
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   color: var(--text-light);
   display: flex;
   align-items: flex-start;

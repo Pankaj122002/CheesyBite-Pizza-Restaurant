@@ -65,7 +65,7 @@ export class OrderService {
   generateWhatsAppMessage(order: Order): string {
     let message = '';
 
-    message += `*🔥 New Order — Rom's Pizza*\n\n`;
+    message += `*🔥 New Order — CheesyBite*\n\n`;
 
     message += `*📋 ORDER DETAILS*\n`;
     message += `• *Order ID:* ${order.orderId}\n`;

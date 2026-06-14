@@ -30,6 +30,12 @@
   height: 400px;
 }
 
+@media (max-width: 576px) {
+  .map-container {
+    height: 250px;
+  }
+}
+
 .table td {
   padding: 12px 0;
   border-bottom: 1px solid var(--border-light);

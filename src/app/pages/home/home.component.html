@@ -1,149 +1,123 @@
-<app-hero-banner
-  title="Rom's Pizza"
-  subtitle="Premium Artisanal Pizza in Muradnagar"
-  backgroundImage="assets/images/hero-pizza-centered.webp"
-  [showCTA]="true"
-  [fullHeight]="true">
-</app-hero-banner>
+<!-- =====================================================
+     CheesyBite — SCROLL-DRIVEN VIDEO EXPERIENCE
+     ===================================================== -->
 
-<section class="section-padding bg-white">
-  <div class="container">
-    <h2 class="section-title animate-fadeInUp">Our Signature Pizzas</h2>
-    <p class="section-subtitle animate-fadeInUp delay-1">Experience the authentic taste of our famous artisanal pizza and sides, prepared fresh daily.</p>
-    
-    <div class="row g-4 mt-2">
-      <div class="col-md-4 animate-fadeInUp" *ngFor="let item of popularItems; let i = index" [ngClass]="'delay-' + (i + 1)">
-        <app-food-card [menuItem]="item"></app-food-card>
-      </div>
-    </div>
-    
-    <div class="text-center mt-5 animate-fadeInUp delay-4">
-      <a routerLink="/menu" class="btn-secondary-custom">View Full Menu</a>
-    </div>
-  </div>
-</section>
+<!-- Canvas-based frame sequencer (full page background) -->
+<div class="video-scroll-wrapper" #videoWrapper>
 
-<section class="section-padding bg-cream">
-  <div class="container">
-    <h2 class="section-title animate-fadeInUp">Why Choose Rom's Pizza</h2>
-    <p class="section-subtitle animate-fadeInUp delay-1">We don't just serve food; we serve an experience crafted with tradition and love.</p>
-    
-    <div class="row g-4 mt-2">
-      <div class="col-md-3 col-6 animate-fadeInUp delay-1">
-        <div class="card premium-card text-center h-100 p-4 border-0 feature-card">
-          <div class="feature-icon mb-3">🔥</div>
-          <h5 class="fw-bold mb-2">Artisanal Perfection</h5>
-          <p class="text-secondary small mb-0">Traditional hand-tossed pizza baked to perfection in our stone oven</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-6 animate-fadeInUp delay-2">
-        <div class="card premium-card text-center h-100 p-4 border-0 feature-card">
-          <div class="feature-icon mb-3">🧀</div>
-          <h5 class="fw-bold mb-2">Premium Ingredients</h5>
-          <p class="text-secondary small mb-0">Freshly sourced vegetables and 100% real mozzarella cheese</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-6 animate-fadeInUp delay-3">
-        <div class="card premium-card text-center h-100 p-4 border-0 feature-card">
-          <div class="feature-icon mb-3">⚡</div>
-          <h5 class="fw-bold mb-2">Quick Service</h5>
-          <p class="text-secondary small mb-0">Fresh preparation with minimal waiting time</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-6 animate-fadeInUp delay-4">
-        <div class="card premium-card text-center h-100 p-4 border-0 feature-card">
-          <div class="feature-icon mb-3">💰</div>
-          <h5 class="fw-bold mb-2">Affordable Prices</h5>
-          <p class="text-secondary small mb-0">Premium taste at pocket-friendly prices starting ₹99</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- The sticky frame stage -->
+  <div class="frame-stage" #frameStage>
 
-<section class="section-padding bg-white">
-  <div class="container">
-    <h2 class="section-title animate-fadeInUp">What Our Customers Say</h2>
-    <p class="section-subtitle animate-fadeInUp delay-1">Join thousands of happy customers who love our authentic flavors.</p>
-    
-    <div class="row g-4 mt-2">
-      <div class="col-md-4 animate-fadeInUp" *ngFor="let review of featuredReviews; let i = index" [ngClass]="'delay-' + (i + 1)">
-        <app-review-card [review]="review"></app-review-card>
-      </div>
-    </div>
-    
-    <div class="text-center mt-5 animate-fadeInUp delay-4">
-      <a routerLink="/reviews" class="btn-secondary-custom">See All Reviews</a>
-    </div>
-  </div>
-</section>
+    <!-- ── SECTION OVERLAYS (text content per section) ── -->
 
-<section class="section-padding bg-dark-section">
-  <div class="container">
-    <div class="row g-4 text-center">
-      <div class="col-md-3 col-6" #statCounter>
-        <h2 class="display-4 fw-bold text-secondary mb-2">10+</h2>
-        <p class="text-light mb-0">Years Serving Muradnagar</p>
-      </div>
-      <div class="col-md-3 col-6" #statCounter>
-        <h2 class="display-4 fw-bold text-secondary mb-2">50,000+</h2>
-        <p class="text-light mb-0">Happy Customers</p>
-      </div>
-      <div class="col-md-3 col-6" #statCounter>
-        <h2 class="display-4 fw-bold text-secondary mb-2">100%</h2>
-        <p class="text-light mb-0">Artisanal Pizza</p>
-      </div>
-      <div class="col-md-3 col-6" #statCounter>
-        <h2 class="display-4 fw-bold text-secondary mb-2">4.5<i class="bi bi-star-fill ms-1 fs-4"></i></h2>
-        <p class="text-light mb-0">Customer Rating</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-padding bg-cream">
-  <div class="container text-center">
-    <h2 class="section-title animate-fadeInUp">Scan To View Our Menu</h2>
-    <p class="section-subtitle animate-fadeInUp delay-1">Scan with your phone camera to view our menu instantly</p>
-    
-    <div class="qr-container mx-auto animate-fadeInUp delay-2">
-      <div class="qr-placeholder bg-white shadow-sm rounded p-3 mx-auto" style="width: 220px; height: 220px; border: 1px solid rgba(0,0,0,0.08); cursor: pointer;">
-        <img loading="lazy" src="assets/images/menu-qr.png" alt="Scan to View Menu" class="img-fluid rounded" style="width: 100%; height: 100%; object-fit: contain;">
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-padding bg-white">
-  <div class="container">
-    <h2 class="section-title animate-fadeInUp">Find Us</h2>
-    <p class="section-subtitle animate-fadeInUp delay-1">Visit our restaurant on Railway Road, Muradnagar</p>
-    
-    <div class="row justify-content-center mt-4">
-      <div class="col-lg-10 animate-fadeInUp delay-2">
-        <div class="map-container rounded overflow-hidden shadow-sm mb-4" style="height: 300px;">
-          <iframe 
-            src="https://maps.google.com/maps?q=Rom's%20Pizza,%20Radhey%20Shyam%20Colony,%20Main,%20GT%20Rd,%20Muradnagar&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy">
-          </iframe>
-        </div>
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center bg-cream p-4 rounded shadow-sm">
-          <div class="mb-3 mb-md-0 d-flex align-items-center">
-            <i class="bi bi-geo-alt-fill text-primary-custom fs-3 me-3"></i>
-            <div>
-              <h5 class="fw-bold mb-1">Rom's Pizza</h5>
-              <p class="mb-0 text-secondary-custom">Radhey Shyam Colony, Main, GT Rd, near Kiet Institute, Muradnagar, Ukhlarsi, Uttar Pradesh 201206</p>
-            </div>
+    <!-- HERO -->
+    <div class="vsection" id="vs-0" #vs0>
+      <div class="vs-content vs-left">
+        <div class="vs-hero-inner">
+          <div class="vs-tag">Est. 2014 · Muradnagar</div>
+          <h1 class="vs-title">Cheesy<br/><em>Bite</em></h1>
+          <p class="vs-desc">Premium artisanal pizza, stone-baked fresh every single day.</p>
+          <div class="vs-actions">
+            <a href="tel:+918954040631" class="vbtn vbtn-primary">
+              <i class="bi bi-telephone-fill"></i> Call Now
+            </a>
+            <a href="https://wa.me/918954040631" target="_blank" rel="noopener" class="vbtn vbtn-whatsapp">
+              <i class="bi bi-whatsapp"></i> Order on WhatsApp
+            </a>
           </div>
-          <a href="https://maps.app.goo.gl/YfEfMfsA4VJpvn2N6" target="_blank" rel="noopener noreferrer" class="btn-primary-custom">
-            Get Directions
+        </div>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <div class="vsection" id="vs-1" #vs1>
+      <div class="vs-content vs-left">
+        <div class="vs-tag">🍕 Our Menu</div>
+        <h2 class="vs-title">Signature<br/><em>Pizzas</em></h2>
+        <p class="vs-desc">Hand-tossed, stone-baked perfection. Classic Margherita to bold BBQ Chicken — every slice tells a story.</p>
+        <a routerLink="/menu" class="vbtn vbtn-primary">Explore Full Menu →</a>
+      </div>
+    </div>
+
+    <!-- WHY US -->
+    <div class="vsection" id="vs-2" #vs2>
+      <div class="vs-content vs-right">
+        <div class="vs-tag">✨ Our Promise</div>
+        <h2 class="vs-title">Crafted<br/><em>With Love</em></h2>
+        <div class="vs-pills">
+          <div class="vs-pill"><span>🔥</span> Stone-oven baked</div>
+          <div class="vs-pill"><span>🧀</span> 100% Real Mozzarella</div>
+          <div class="vs-pill"><span>⚡</span> Quick Service</div>
+          <div class="vs-pill"><span>💰</span> Starting ₹99 only</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REVIEWS / STATS -->
+    <div class="vsection" id="vs-3" #vs3>
+      <div class="vs-content vs-left">
+        <div class="vs-tag">⭐ Loved by Thousands</div>
+        <h2 class="vs-title">50,000+<br/><em>Happy Slices</em></h2>
+        <div class="vs-stats">
+          <div class="vs-stat"><span class="vs-num">10+</span><span class="vs-lbl">Years</span></div>
+          <div class="vs-stat"><span class="vs-num">4.5★</span><span class="vs-lbl">Rating</span></div>
+          <div class="vs-stat"><span class="vs-num">100%</span><span class="vs-lbl">Artisanal</span></div>
+        </div>
+        <a routerLink="/reviews" class="vbtn vbtn-outline">See All Reviews →</a>
+      </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="vsection" id="vs-4" #vs4>
+      <div class="vs-content vs-right">
+        <div class="vs-tag">📸 Gallery</div>
+        <h2 class="vs-title">See It<br/><em>To Believe It</em></h2>
+        <p class="vs-desc">Our pizzas look as good as they taste. Browse our gallery of freshly baked masterpieces.</p>
+        <a routerLink="/gallery" class="vbtn vbtn-primary">View Gallery →</a>
+      </div>
+    </div>
+
+    <!-- FIND US / CTA -->
+    <div class="vsection" id="vs-5" #vs5>
+      <div class="vs-content vs-center">
+        <div class="vs-tag">📍 Visit Us</div>
+        <h2 class="vs-title">Find<br/><em>CheesyBite</em></h2>
+        <p class="vs-desc">Radhey Shyam Colony, Main GT Rd,<br/>near KIET Institute, Muradnagar — UP 201206</p>
+        <div class="vs-actions vs-actions-center">
+          <a href="https://maps.app.goo.gl/YfEfMfsA4VJpvn2N6" target="_blank" rel="noopener" class="vbtn vbtn-primary">
+            <i class="bi bi-geo-alt-fill"></i> Get Directions
+          </a>
+          <a routerLink="/menu" class="vbtn vbtn-outline">
+            View Menu
           </a>
         </div>
       </div>
     </div>
+
+    <!-- Navigation dots -->
+    <nav class="vdots" aria-label="Sections">
+      <button class="vdot active" data-s="0" title="Home"></button>
+      <button class="vdot" data-s="1" title="Menu"></button>
+      <button class="vdot" data-s="2" title="Why Us"></button>
+      <button class="vdot" data-s="3" title="Reviews"></button>
+      <button class="vdot" data-s="4" title="Gallery"></button>
+      <button class="vdot" data-s="5" title="Find Us"></button>
+    </nav>
+
+    <!-- Progress bar -->
+    <div class="vprogress" #vprogress></div>
+
+    <!-- Scroll hint -->
+    <div class="vhint" #vhint>
+      <span>Scroll</span>
+      <div class="vhint-mouse"><div class="vhint-dot"></div></div>
+    </div>
+
+  </div><!-- frame-stage -->
+
+  <!-- Scroll spacers that drive animation -->
+  <div class="vspacers">
+    <div class="vspacer" *ngFor="let s of sections"></div>
   </div>
-</section>
+
+</div><!-- video-scroll-wrapper -->
