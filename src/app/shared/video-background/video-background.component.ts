@@ -70,7 +70,7 @@ export class VideoBackgroundComponent implements OnInit, AfterViewInit, OnDestro
     for (let i = 0; i < TOTAL_FRAMES; i++) {
       const img = new Image();
       const num = String(i + 1).padStart(3, '0');
-      img.src = `assets/images/frames/ezgif-frame-${num}.png`;
+      img.src = `assets/images/frames/ezgif-frame-${num}.webp`;
       img.onload = () => {
         loaded++;
         if (i === 0) this.drawFrame(0);
