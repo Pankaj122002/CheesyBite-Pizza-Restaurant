@@ -1,6 +1,6 @@
-# Rom's Pizza – Complete Project Documentation
+# CheesyBite Pizza – Complete Project Documentation
 
-Welcome to the **Rom's Pizza** website repository! This is a modern, responsive Angular 19 application built using Standalone Components, designed to provide a seamless digital experience for Muradnagar's favorite premium artisanal pizza shop.
+Welcome to the **CheesyBite Pizza** website repository! This is a modern, responsive Angular 19 application built using Standalone Components, designed to provide a seamless digital experience for Muradnagar's favorite premium artisanal pizza shop.
 
 This document covers everything you need to know about the architecture, tech stack, components, services, styling, testing strategies, and the Git repository details.
 
@@ -25,7 +25,7 @@ This application completely drops `NgModules` in favor of **Angular Standalone C
 Contains route-level components. Each component here typically corresponds to a distinct URL in the application.
 *   **`home`**: The landing page containing hero sections, featured menus, selling points, stats, and a Google Map integration.
 *   **`menu`**: The full product listing. Iterates over menu data, allowing users to add items to their cart.
-*   **`about`**: Tells the story of Rom's Pizza, displaying timelines and company values.
+*   **`about`**: Tells the story of CheesyBite Pizza, displaying timelines and company values.
 *   **`contact`**: Provides store address, contact details, embedded map, and operating hours.
 *   **`gallery`**: Features a masonry-style image grid with category filtering and a full-screen image lightbox.
 *   **`reviews`**: Displays customer testimonials using dynamic card layouts.
@@ -69,7 +69,7 @@ Because the application operates without a backend database, it utilizes a frict
 1.  **Selection**: The user browses the menu and clicks "Add to Cart". The `CartService` stores this in memory.
 2.  **Review**: The user navigates to the Cart to review quantities and total pricing.
 3.  **Checkout**: The user clicks "Proceed to Order".
-4.  **Submission**: The app redirects to the WhatsApp API (`wa.me/`), opening the user's WhatsApp app with a pre-filled message sent directly to Rom's Pizza.
+4.  **Submission**: The app redirects to the WhatsApp API (`wa.me/`), opening the user's WhatsApp app with a pre-filled message sent directly to CheesyBite Pizza.
 
 ---
 
@@ -95,11 +95,11 @@ The `cypress/e2e/` folder contains comprehensive End-to-End integration tests:
 
 The project is securely version-controlled using Git. 
 *   **Branch:** `main`
-*   **Remote URL:** [https://github.com/Pankaj122002/Roms-s-Pizza-Restaurant.git](https://github.com/Pankaj122002/Roms-s-Pizza-Restaurant.git)
+*   **Remote URL:** [https://github.com/Pankaj122002/CheesyBite-Pizza-Restaurant.git]
 
 To clone the repository locally, run:
 ```bash
-git clone https://github.com/Pankaj122002/Roms-s-Pizza-Restaurant.git
+git clone https://github.com/Pankaj122002/CheesyBite-Pizza-Restaurant.git
 ```
 
 ---
@@ -113,8 +113,8 @@ git clone https://github.com/Pankaj122002/Roms-s-Pizza-Restaurant.git
 ### Installation
 1. Clone the repository and navigate into the directory:
    ```bash
-   git clone https://github.com/Pankaj122002/Roms-s-Pizza-Restaurant.git
-   cd Roms-s-Pizza-Restaurant
+   git clone https://github.com/Pankaj122002/CheesyBite-Pizza-Restaurant.git
+   cd CheesyBite-Pizza-Restaurant
    ```
 2. Install dependencies:
    ```bash
@@ -135,7 +135,7 @@ Run `npm run build` or `ng build`. The output artifacts will be placed in the `d
 
 The project is currently configured and deployed on **Netlify**. 
 
-**Live URL:** [https://romspizzamuradnagar.netlify.app/](https://romspizzamuradnagar.netlify.app/) 
+**Live URL:** [https://cheesybitepizza.netlify.app/]
 
 The configuration is managed via the `netlify.toml` file in the root directory, which ensures:
 1. **Automated Builds**: The build command is set to `npm run build`.
@@ -143,4 +143,4 @@ The configuration is managed via the `netlify.toml` file in the root directory, 
 3. **SPA Routing**: A `[[redirects]]` rule redirects all incoming traffic (`/*`) back to `/index.html` with a `200` status code. This is essential for Angular's client-side routing to function properly on direct URL visits or hard refreshes.
 
 ---
-*Built with passion for Rom's Pizza!*
+*Built with passion for CheesyBite Pizza!*
