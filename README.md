@@ -14,6 +14,16 @@ This document covers everything you need to know about the architecture, tech st
 *   **Routing:** Angular Router (lazy-loading for page components)
 *   **Testing:** Cypress (End-to-End testing), Jasmine/Karma (Unit testing)
 *   **Build Tool:** Angular CLI (`@angular/cli`)
+*   **Media Processing:** Node.js, `sharp` (for WebP compression), `qrcode` (for dynamic QR generation)
+
+---
+
+## ✨ Key Features & Advanced Optimizations
+
+*   **Cinematic Video Scrubbing Background:** Features a highly optimized, scroll-driven 4K video background. To bypass mobile autoplay restrictions and maintain a premium 60FPS feel, the video was converted into an array of 240 individual high-quality WebP image frames loaded dynamically via HTML5 Canvas.
+*   **Media Pipeline Optimization:** Implemented a custom Node.js script utilizing `sharp` to compress 160MB of raw 4K PNG animation frames into a lightweight 4.8MB WebP payload, slashing load times by 95% without compromising visual fidelity.
+*   **Serverless WhatsApp E-Commerce:** Built a complete shopping cart and checkout architecture that operates entirely on the client side, compiling order data into a formatted URI string and executing transactions directly through the WhatsApp Business API.
+*   **Automated SEO & Typography:** Employs an Angular `SeoService` to dynamically inject OpenGraph tags based on active routes, paired with a custom CSS design system utilizing premium Google Fonts (*Cinzel* and *Dancing Script*).
 
 ---
 
