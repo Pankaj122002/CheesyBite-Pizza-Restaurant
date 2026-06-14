@@ -11,16 +11,17 @@ if (!fs.existsSync(outputDir)) {
 
 async function processImages() {
   const files = fs.readdirSync(inputDir).filter(f => f.endsWith('.png'));
-  console.log(`Found ${files.length} images to process. Compression starting...`);
+  console.log(`Found ${files.length} images to process. High-Quality WebP Compression starting...`);
   
   let processed = 0;
   for (const file of files) {
     const inputPath = path.join(inputDir, file);
     const outputPath = path.join(outputDir, file.replace('.png', '.webp'));
     
+    // Resize to 1920x1920 (high resolution) and use WebP quality 90 (near lossless)
     await sharp(inputPath)
-      .resize(1024, 1024, { fit: 'inside' })
-      .webp({ quality: 50, effort: 6 })
+      .resize(1920, 1920, { fit: 'inside' })
+      .webp({ quality: 90, effort: 6 })
       .toFile(outputPath);
       
     processed++;
