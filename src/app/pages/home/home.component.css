@@ -34,6 +34,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
   z-index: 10;
 }
 
@@ -46,6 +47,7 @@
 .vs-content {
   max-width: 460px;
   padding: 40px 48px;
+  will-change: transform, opacity;
 }
 
 .vs-left  { margin-left: 4%; margin-right: auto; }

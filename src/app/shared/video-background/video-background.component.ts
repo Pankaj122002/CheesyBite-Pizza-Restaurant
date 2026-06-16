@@ -66,18 +66,41 @@ export class VideoBackgroundComponent implements OnInit, AfterViewInit, OnDestro
 
   private preloadFrames(done: () => void) {
     this.images = new Array(TOTAL_FRAMES);
-    let loaded = 0;
+    let initialFramesLoaded = 0;
+    const INITIAL_PRELOAD_COUNT = Math.min(10, TOTAL_FRAMES);
+    let doneCalled = false;
+
     for (let i = 0; i < TOTAL_FRAMES; i++) {
       const img = new Image();
       const num = String(i + 1).padStart(3, '0');
       img.src = `assets/images/frames/ezgif-frame-${num}.webp`;
       img.onload = () => {
-        loaded++;
         if (i === 0) this.drawFrame(0);
-        if (loaded === TOTAL_FRAMES) done();
+        
+        if (i < INITIAL_PRELOAD_COUNT) {
+          initialFramesLoaded++;
+          if (initialFramesLoaded === INITIAL_PRELOAD_COUNT && !doneCalled) {
+            doneCalled = true;
+            done();
+          }
+        }
       };
-      img.onerror = () => { loaded++; if (loaded === TOTAL_FRAMES) done(); };
+      img.onerror = () => {
+        if (i < INITIAL_PRELOAD_COUNT) {
+          initialFramesLoaded++;
+          if (initialFramesLoaded === INITIAL_PRELOAD_COUNT && !doneCalled) {
+            doneCalled = true;
+            done();
+          }
+        }
+      };
       this.images[i] = img;
+    }
+    
+    // Fallback if images are instantly cached or error out
+    if (INITIAL_PRELOAD_COUNT === 0 && !doneCalled) {
+      doneCalled = true;
+      done();
     }
   }
 

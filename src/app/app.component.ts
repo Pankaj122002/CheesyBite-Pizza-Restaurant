@@ -17,8 +17,16 @@ import { SeoService } from './services/seo.service';
     <main>
       <router-outlet />
     </main>
-    <app-footer />
-    <app-floating-buttons />
+    @defer (on viewport) {
+      <app-footer />
+    } @placeholder {
+      <div style="height: 1px;"></div>
+    }
+    @defer (on idle) {
+      <app-floating-buttons />
+    } @placeholder {
+      <div></div>
+    }
   `,
   styles: [`
     main {
